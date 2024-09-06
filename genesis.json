@@ -1,0 +1,19 @@
+{
+  "config" : {
+    "chainId" : 1337,
+    "berlinBlock" : 0,
+    "contractSizeLimit": 2147483647,
+    "qbft" : {
+      "blockperiodseconds" : 2,
+      "epochlength" : 30000,
+      "requesttimeoutseconds" : 4
+    }
+  },
+  "nonce" : "0x0",
+  "timestamp" : "0x58ee40ba",
+  "gasLimit": "0x1fffffffffffff",
+  "difficulty" : "0x1",
+  "mixHash" : "0x63746963616c2062797a616e74696e65206661756c7420746f6c6572616e6365",
+  "coinbase" : "0x0000000000000000000000000000000000000000",
+  "extraData" : "0xf87aa00000000000000000000000000000000000000000000000000000000000000000f85494b47524407750c72e1e27bd9d7aa2d8df7084dadc943b83dc3235906c801fe0a4a181d3c9d684cb86c294f1600efcf5b93f30e8ac321f3bb48c54af76b5cf94c4912e6b14610449dde0de00cc08ef98bd62b674c080c0"
+}

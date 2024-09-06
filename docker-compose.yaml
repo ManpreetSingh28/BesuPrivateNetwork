@@ -1,0 +1,71 @@
+version: "3.7"
+
+services:
+  node1:
+    image: hyperledger/besu:latest
+    container_name: node1
+    command: >
+      --data-path=/var/lib/besu/data
+      --genesis-file=/var/lib/besu/genesis.json
+      --rpc-http-enabled
+      --host-allowlist="*"
+      --rpc-http-host=0.0.0.0
+      --rpc-http-port=8545
+      --rpc-http-cors-origins="all"
+      --rpc-http-api=ETH,NET,QBFT
+      --min-gas-price=0
+      --logging=INFO
+    volumes:
+      - ./genesis.json:/var/lib/besu/genesis.json
+      - ./Node-1/data:/var/lib/besu/data
+    networks:
+      - besu_network
+    ports:
+      - 8545:8545
+      - 30303:30303
+
+  node2:
+    image: hyperledger/besu:latest
+    container_name: node2
+    entrypoint: /var/lib/besu/node1ip.sh
+    volumes:
+      - ./genesis.json:/var/lib/besu/genesis.json
+      - ./Node-2/data:/var/lib/besu/data
+      - ./node1ip.sh:/var/lib/besu/node1ip.sh
+    networks:
+      - besu_network
+    ports:
+      - 8546:8546
+      - 30304:30304
+
+  node3:
+    image: hyperledger/besu:latest
+    container_name: node3
+    entrypoint: /var/lib/besu/node1ip.sh
+    volumes:
+      - ./genesis.json:/var/lib/besu/genesis.json
+      - ./Node-3/data:/var/lib/besu/data
+      - ./node1ip.sh:/var/lib/besu/node1ip.sh
+    networks:
+      - besu_network
+    ports:
+      - 8547:8547
+      - 30305:30305
+
+  node4:
+    image: hyperledger/besu:latest
+    container_name: node4
+    entrypoint: /var/lib/besu/node1ip.sh
+    volumes:
+      - ./genesis.json:/var/lib/besu/genesis.json
+      - ./Node-4/data:/var/lib/besu/data
+      - ./node1ip.sh:/var/lib/besu/node1ip.sh
+    networks:
+      - besu_network
+    ports:
+      - 8548:8548
+      - 30306:30306
+
+networks:
+  besu_network:
+    external: true
